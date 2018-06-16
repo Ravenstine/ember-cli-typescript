@@ -3,6 +3,8 @@ Ember ES Class Generators
 
 Today's ECMAScript classes in Ember... today!
 
+See the RFC: https://github.com/emberjs/rfcs/blob/master/text/0240-es-classes.md
+
 This plugin allows Ember CLI to generate ECMAScript classes along with [ember-decorators](https://github.com/ember-decorators/ember-decorators)
 
 Most of the code was ripped directly from [ember-es-class-generators](https://github.com/typed-ember/ember-es-class-generators).  The vast majority of the effort came from that project; this codebase is merely those generators taken and changes from Typescript to ECMAScript.
@@ -30,6 +32,10 @@ export default class Foo extends Model {
   @hasMany('foo') friends
 }
 ```
+
+## Notes
+
+You may have problems using this plugin(or rather ES classes) if you are not using Ember 3.0 or greater.
 
 ## License
 
