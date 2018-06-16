@@ -1,8 +1,8 @@
 'use strict';
 
-const path = require('path');
-const stringUtil = require('ember-cli-string-utils');
-const useTestFrameworkDetector = require('../test-framework-detector');
+const path                     = require('path'),
+      stringUtil               = require('ember-cli-string-utils'),
+      useTestFrameworkDetector = require('../test-framework-detector');
 
 module.exports = useTestFrameworkDetector({
   description: 'Generates a route unit test.',

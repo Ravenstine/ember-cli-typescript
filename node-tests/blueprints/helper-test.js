@@ -16,7 +16,7 @@ describe('Acceptance: ember generate and destroy helper', function() {
     // pass any additional command line options in the arguments array
     return emberNew()
       .then(() => emberGenerateDestroy(args, (file) => {
-        const generated = file('app/helpers/foo.ts');
+        const generated = file('app/helpers/foo.js');
         expect(generated).to.contain('export function foo');
         expect(generated).to.contain('export default helper(foo)');
     }));

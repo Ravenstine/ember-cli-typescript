@@ -18,7 +18,7 @@ describe('Blueprint: component-addon', function() {
 
     it('component-addon foo-bar', function() {
       return emberGenerateDestroy(['component-addon', 'foo-bar'], _file => {
-        expect(_file('app/components/foo-bar.ts'))
+        expect(_file('app/components/foo-bar.js'))
           .to.contain("export { default } from 'my-addon/components/foo-bar';");
       });
     });

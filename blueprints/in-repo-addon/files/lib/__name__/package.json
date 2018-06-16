@@ -4,6 +4,6 @@
     "ember-addon"
   ],
   "devDependencies": {
-    "ember-cli-typescript": "*"
+    "ember-es-class-generators": "*"
   }
 }

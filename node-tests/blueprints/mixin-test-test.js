@@ -22,7 +22,7 @@ describe('Blueprint: mixin-test', function() {
 
     it('mixin-test foo', function() {
       return emberGenerateDestroy(['mixin-test', 'foo'], _file => {
-        expect(_file('tests/unit/mixins/foo-test.ts')).to.equal(fixture('mixin-test/default.ts'));
+        expect(_file('tests/unit/mixins/foo-test.js')).to.equal(fixture('mixin-test/default.js'));
       });
     });
 
@@ -36,7 +36,7 @@ describe('Blueprint: mixin-test', function() {
 
       it('mixin-test foo', function() {
         return emberGenerateDestroy(['mixin-test', 'foo'], _file => {
-          expect(_file('tests/unit/mixins/foo-test.ts')).to.equal(fixture('mixin-test/mocha.ts'));
+          expect(_file('tests/unit/mixins/foo-test.js')).to.equal(fixture('mixin-test/mocha.js'));
         });
       });
     });
@@ -48,7 +48,7 @@ describe('Blueprint: mixin-test', function() {
 
       it('mixin-test foo', function() {
         return emberGenerateDestroy(['mixin-test', 'foo'], _file => {
-          expect(_file('tests/unit/mixins/foo-test.ts')).to.equal(fixture('mixin-test/rfc232.ts'));
+          expect(_file('tests/unit/mixins/foo-test.js')).to.equal(fixture('mixin-test/rfc232.js'));
         });
       });
     });
@@ -63,7 +63,7 @@ describe('Blueprint: mixin-test', function() {
 
     it('mixin-test foo', function() {
       return emberGenerateDestroy(['mixin-test', 'foo'], _file => {
-        expect(_file('tests/unit/mixins/foo-test.ts')).to.equal(fixture('mixin-test/addon.ts'));
+        expect(_file('tests/unit/mixins/foo-test.js')).to.equal(fixture('mixin-test/addon.js'));
       });
     });
   });

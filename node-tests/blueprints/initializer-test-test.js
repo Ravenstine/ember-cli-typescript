@@ -22,8 +22,8 @@ describe('Blueprint: initializer-test', function() {
 
     it('initializer-test foo', function() {
       return emberGenerateDestroy(['initializer-test', 'foo'], _file => {
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.equal(
-          fixture('initializer-test/default.ts')
+        expect(_file('tests/unit/initializers/foo-test.js')).to.equal(
+          fixture('initializer-test/default.js')
         );
       });
     });
@@ -35,8 +35,8 @@ describe('Blueprint: initializer-test', function() {
 
       it('initializer-test foo', function() {
         return emberGenerateDestroy(['initializer-test', 'foo'], _file => {
-          expect(_file('tests/unit/initializers/foo-test.ts')).to.equal(
-            fixture('initializer-test/rfc232.ts')
+          expect(_file('tests/unit/initializers/foo-test.js')).to.equal(
+            fixture('initializer-test/rfc232.js')
           );
         });
       });
@@ -52,8 +52,8 @@ describe('Blueprint: initializer-test', function() {
 
       it('initializer-test foo', function() {
         return emberGenerateDestroy(['initializer-test', 'foo'], _file => {
-          expect(_file('tests/unit/initializers/foo-test.ts')).to.equal(
-            fixture('initializer-test/mocha.ts')
+          expect(_file('tests/unit/initializers/foo-test.js')).to.equal(
+            fixture('initializer-test/mocha.js')
           );
         });
       });
@@ -69,8 +69,8 @@ describe('Blueprint: initializer-test', function() {
 
     it('initializer-test foo', function() {
       return emberGenerateDestroy(['initializer-test', 'foo'], _file => {
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.equal(
-          fixture('initializer-test/dummy.ts')
+        expect(_file('tests/unit/initializers/foo-test.js')).to.equal(
+          fixture('initializer-test/dummy.js')
         );
       });
     });

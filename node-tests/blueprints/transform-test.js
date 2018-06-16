@@ -25,14 +25,14 @@ describe('Acceptance: generate and destroy transform blueprints', function() {
       let args = ['transform', 'foo'];
 
       return emberGenerateDestroy(args, _file => {
-        expect(_file('app/transforms/foo.ts'))
-          .to.contain("import DS from 'ember-data';")
-          .to.contain('export default DS.Transform.extend(')
+        expect(_file('app/transforms/foo.js'))
+          .to.contain("import { Transform } from 'ember-data';")
+          .to.contain('export default class extends Transform')
           .to.contain('deserialize(serialized) {')
           .to.contain('serialize(deserialized) {');
 
-        expect(_file('tests/unit/transforms/foo-test.ts')).to.equal(
-          fixture('transform-test/default.ts')
+        expect(_file('tests/unit/transforms/foo-test.js')).to.equal(
+          fixture('transform-test/default.js')
         );
       });
     });
@@ -41,8 +41,8 @@ describe('Acceptance: generate and destroy transform blueprints', function() {
       let args = ['transform-test', 'foo'];
 
       return emberGenerateDestroy(args, _file => {
-        expect(_file('tests/unit/transforms/foo-test.ts')).to.equal(
-          fixture('transform-test/default.ts')
+        expect(_file('tests/unit/transforms/foo-test.js')).to.equal(
+          fixture('transform-test/default.js')
         );
       });
     });
@@ -54,8 +54,8 @@ describe('Acceptance: generate and destroy transform blueprints', function() {
 
       it('transform-test-test foo', function() {
         return emberGenerateDestroy(['transform-test', 'foo'], _file => {
-          expect(_file('tests/unit/transforms/foo-test.ts')).to.equal(
-            fixture('transform-test/rfc232.ts')
+          expect(_file('tests/unit/transforms/foo-test.js')).to.equal(
+            fixture('transform-test/rfc232.js')
           );
         });
       });
@@ -74,8 +74,8 @@ describe('Acceptance: generate and destroy transform blueprints', function() {
         let args = ['transform-test', 'foo'];
 
         return emberGenerateDestroy(args, _file => {
-          expect(_file('tests/unit/transforms/foo-test.ts')).to.equal(
-            fixture('transform-test/mocha-0.12.ts')
+          expect(_file('tests/unit/transforms/foo-test.js')).to.equal(
+            fixture('transform-test/mocha-0.12.js')
           );
         });
       });

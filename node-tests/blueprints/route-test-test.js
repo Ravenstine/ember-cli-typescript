@@ -22,7 +22,7 @@ describe('Blueprint: route-test', function() {
 
     it('route-test foo', function() {
       return emberGenerateDestroy(['route-test', 'foo'], _file => {
-        expect(_file('tests/unit/routes/foo-test.ts')).to.equal(fixture('route-test/default.ts'));
+        expect(_file('tests/unit/routes/foo-test.js')).to.equal(fixture('route-test/default.js'));
       });
     });
 
@@ -33,7 +33,7 @@ describe('Blueprint: route-test', function() {
 
       it('route-test foo', function() {
         return emberGenerateDestroy(['route-test', 'foo'], _file => {
-          expect(_file('tests/unit/routes/foo-test.ts')).to.equal(fixture('route-test/rfc232.ts'));
+          expect(_file('tests/unit/routes/foo-test.js')).to.equal(fixture('route-test/rfc232.js'));
         });
       });
     });
@@ -49,7 +49,7 @@ describe('Blueprint: route-test', function() {
 
       it('route-test foo', function() {
         return emberGenerateDestroy(['route-test', 'foo'], _file => {
-          expect(_file('tests/unit/routes/foo-test.ts')).to.equal(fixture('route-test/mocha.ts'));
+          expect(_file('tests/unit/routes/foo-test.js')).to.equal(fixture('route-test/mocha.js'));
         });
       });
     });
@@ -65,8 +65,8 @@ describe('Blueprint: route-test', function() {
 
       it('route-test foo', function() {
         return emberGenerateDestroy(['route-test', 'foo'], _file => {
-          expect(_file('tests/unit/routes/foo-test.ts')).to.equal(
-            fixture('route-test/mocha-0.12.ts')
+          expect(_file('tests/unit/routes/foo-test.js')).to.equal(
+            fixture('route-test/mocha-0.12.js')
           );
         });
       });
@@ -82,7 +82,7 @@ describe('Blueprint: route-test', function() {
 
     it('route-test foo', function() {
       return emberGenerateDestroy(['route-test', 'foo'], _file => {
-        expect(_file('tests/unit/routes/foo-test.ts')).to.equal(fixture('route-test/default.ts'));
+        expect(_file('tests/unit/routes/foo-test.js')).to.equal(fixture('route-test/default.js'));
       });
     });
   });

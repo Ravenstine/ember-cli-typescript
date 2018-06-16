@@ -21,9 +21,9 @@ describe('Blueprint: initializer', function() {
 
     it('initializer foo', function() {
       return emberGenerateDestroy(['initializer', 'foo'], _file => {
-        expect(_file('app/initializers/foo.ts'))
+        expect(_file('app/initializers/foo.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -31,7 +31,7 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.contain(
+        expect(_file('tests/unit/initializers/foo-test.js')).to.contain(
           "import { initialize } from 'my-app/initializers/foo';"
         );
       });
@@ -39,9 +39,9 @@ describe('Blueprint: initializer', function() {
 
     it('initializer foo/bar', function() {
       return emberGenerateDestroy(['initializer', 'foo/bar'], _file => {
-        expect(_file('app/initializers/foo/bar.ts'))
+        expect(_file('app/initializers/foo/bar.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -49,7 +49,7 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('tests/unit/initializers/foo/bar-test.ts')).to.contain(
+        expect(_file('tests/unit/initializers/foo/bar-test.js')).to.contain(
           "import { initialize } from 'my-app/initializers/foo/bar';"
         );
       });
@@ -57,9 +57,9 @@ describe('Blueprint: initializer', function() {
 
     it('initializer foo --pod', function() {
       return emberGenerateDestroy(['initializer', 'foo', '--pod'], _file => {
-        expect(_file('app/initializers/foo.ts'))
+        expect(_file('app/initializers/foo.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -71,9 +71,9 @@ describe('Blueprint: initializer', function() {
 
     it('initializer foo/bar --pod', function() {
       return emberGenerateDestroy(['initializer', 'foo/bar', '--pod'], _file => {
-        expect(_file('app/initializers/foo/bar.ts'))
+        expect(_file('app/initializers/foo/bar.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -90,9 +90,9 @@ describe('Blueprint: initializer', function() {
 
       it('initializer foo --pod', function() {
         return emberGenerateDestroy(['initializer', 'foo', '--pod'], _file => {
-          expect(_file('app/initializers/foo.ts'))
+          expect(_file('app/initializers/foo.js'))
             .to.contain('import Application from \'@ember/application\';')
-            .to.contain('export function initialize(application: Application): void {')
+            .to.contain('export function initialize(application) {')
             .to.contain("  // application.inject('route', 'foo', 'service:foo');")
             .to.contain('}')
             .to.contain('')
@@ -104,9 +104,9 @@ describe('Blueprint: initializer', function() {
 
       it('initializer foo/bar --pod', function() {
         return emberGenerateDestroy(['initializer', 'foo/bar', '--pod'], _file => {
-          expect(_file('app/initializers/foo/bar.ts'))
+          expect(_file('app/initializers/foo/bar.js'))
             .to.contain('import Application from \'@ember/application\';')
-            .to.contain('export function initialize(application: Application): void {')
+            .to.contain('export function initialize(application) {')
             .to.contain("  // application.inject('route', 'foo', 'service:foo');")
             .to.contain('}')
             .to.contain('')
@@ -127,9 +127,9 @@ describe('Blueprint: initializer', function() {
     // this is a pretty corner case scenario.
     it.skip('initializer foo', function() {
       return emberGenerateDestroy(['initializer', 'foo'], _file => {
-        expect(_file('addon/initializers/foo.ts'))
+        expect(_file('addon/initializers/foo.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -137,11 +137,11 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('app/initializers/foo.ts')).to.contain(
+        expect(_file('app/initializers/foo.js')).to.contain(
           "export { default, initialize } from 'my-addon/initializers/foo';"
         );
 
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.exist;
+        expect(_file('tests/unit/initializers/foo-test.js')).to.exist;
       });
     });
 
@@ -149,9 +149,9 @@ describe('Blueprint: initializer', function() {
     // this is a pretty corner case scenario.
     it.skip('initializer foo/bar', function() {
       return emberGenerateDestroy(['initializer', 'foo/bar'], _file => {
-        expect(_file('addon/initializers/foo/bar.ts'))
+        expect(_file('addon/initializers/foo/bar.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -159,19 +159,19 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('app/initializers/foo/bar.ts')).to.contain(
+        expect(_file('app/initializers/foo/bar.js')).to.contain(
           "export { default, initialize } from 'my-addon/initializers/foo/bar';"
         );
 
-        expect(_file('tests/unit/initializers/foo/bar-test.ts')).to.exist;
+        expect(_file('tests/unit/initializers/foo/bar-test.js')).to.exist;
       });
     });
 
     it('initializer foo --dumy', function() {
       return emberGenerateDestroy(['initializer', 'foo', '--dummy'], _file => {
-        expect(_file('tests/dummy/app/initializers/foo.ts'))
+        expect(_file('tests/dummy/app/initializers/foo.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -179,17 +179,17 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('app/initializers/foo.ts')).to.not.exist;
+        expect(_file('app/initializers/foo.js')).to.not.exist;
 
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.not.exist;
+        expect(_file('tests/unit/initializers/foo-test.js')).to.not.exist;
       });
     });
 
     it('initializer foo/bar --dummy', function() {
       return emberGenerateDestroy(['initializer', 'foo/bar', '--dummy'], _file => {
-        expect(_file('tests/dummy/app/initializers/foo/bar.ts'))
+        expect(_file('tests/dummy/app/initializers/foo/bar.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -197,9 +197,9 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('app/initializers/foo/bar.ts')).to.not.exist;
+        expect(_file('app/initializers/foo/bar.js')).to.not.exist;
 
-        expect(_file('tests/unit/initializers/foo/bar-test.ts')).to.not.exist;
+        expect(_file('tests/unit/initializers/foo/bar-test.js')).to.not.exist;
       });
     });
 
@@ -207,7 +207,7 @@ describe('Blueprint: initializer', function() {
       generateFakePackageManifest('ember-cli-qunit', '4.2.0');
 
       return emberGenerateDestroy(['initializer-test', 'foo'], _file => {
-        expect(_file('tests/unit/initializers/foo-test.ts'))
+        expect(_file('tests/unit/initializers/foo-test.js'))
           .to.contain("import { initialize } from 'dummy/initializers/foo';")
           .to.contain("module('Unit | Initializer | foo'")
           .to.contain('application = this.TestApplication.create(')
@@ -225,9 +225,9 @@ describe('Blueprint: initializer', function() {
 
     it('initializer foo --in-repo-addon=my-addon', function() {
       return emberGenerateDestroy(['initializer', 'foo', '--in-repo-addon=my-addon'], _file => {
-        expect(_file('lib/my-addon/addon/initializers/foo.ts'))
+        expect(_file('lib/my-addon/addon/initializers/foo.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -235,19 +235,19 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('lib/my-addon/app/initializers/foo.ts')).to.contain(
+        expect(_file('lib/my-addon/app/initializers/foo.js')).to.contain(
           "export { default, initialize } from 'my-addon/initializers/foo';"
         );
 
-        expect(_file('tests/unit/initializers/foo-test.ts')).to.exist;
+        expect(_file('tests/unit/initializers/foo-test.js')).to.exist;
       });
     });
 
     it('initializer foo/bar --in-repo-addon=my-addon', function() {
       return emberGenerateDestroy(['initializer', 'foo/bar', '--in-repo-addon=my-addon'], _file => {
-        expect(_file('lib/my-addon/addon/initializers/foo/bar.ts'))
+        expect(_file('lib/my-addon/addon/initializers/foo/bar.js'))
           .to.contain('import Application from \'@ember/application\';')
-          .to.contain('export function initialize(application: Application): void {')
+          .to.contain('export function initialize(application) {')
           .to.contain("  // application.inject('route', 'foo', 'service:foo');")
           .to.contain('}')
           .to.contain('')
@@ -255,11 +255,11 @@ describe('Blueprint: initializer', function() {
           .to.contain('  initialize')
           .to.contain('};');
 
-        expect(_file('lib/my-addon/app/initializers/foo/bar.ts')).to.contain(
+        expect(_file('lib/my-addon/app/initializers/foo/bar.js')).to.contain(
           "export { default, initialize } from 'my-addon/initializers/foo/bar';"
         );
 
-        expect(_file('tests/unit/initializers/foo/bar-test.ts')).to.exist;
+        expect(_file('tests/unit/initializers/foo/bar-test.js')).to.exist;
       });
     });
   });

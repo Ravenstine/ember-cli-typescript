@@ -1,8 +1,8 @@
 'use strict';
 
-const path = require('path');
-const stringUtil = require('ember-cli-string-utils');
-const inflector = require('inflection');
+const path       = require('path'),
+      stringUtil = require('ember-cli-string-utils'),
+      inflector  = require('inflection');
 
 module.exports = {
   description: 'Generates import wrappers for a route and its template.',

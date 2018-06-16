@@ -23,11 +23,11 @@ describe('Acceptance: generate and destroy model blueprints', function() {
     let args = ['model', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/models/foo.ts'))
-        .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Foo extends DS.Model.extend(');
+      expect(_file('app/models/foo.js'))
+        .to.contain("import { Model } from 'ember-data';")
+        .to.contain('export default class Foo extends Model');
 
-      expect(_file('tests/unit/models/foo-test.ts')).to.equal(fixture('model-test/foo-default.ts'));
+      expect(_file('tests/unit/models/foo-test.js')).to.equal(fixture('model-test/foo-default.js'));
     });
   });
 
@@ -46,19 +46,19 @@ describe('Acceptance: generate and destroy model blueprints', function() {
     ];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/models/foo.ts'))
-        .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Foo extends DS.Model.extend(')
-        .to.contain('misc: DS.attr()')
-        .to.contain("skills: DS.attr('array')")
-        .to.contain("isActive: DS.attr('boolean')")
-        .to.contain("birthday: DS.attr('date')")
-        .to.contain("someObject: DS.attr('object')")
-        .to.contain("age: DS.attr('number')")
-        .to.contain("name: DS.attr('string')")
-        .to.contain("customAttr: DS.attr('custom-transform')");
+      expect(_file('app/models/foo.js'))
+        .to.contain("import { Model } from 'ember-data';")
+        .to.contain('export default class Foo extends Model')
+        .to.contain('@attr() misc')
+        .to.contain("@attr('array') skills")
+        .to.contain("@attr('boolean') isActive")
+        .to.contain("@attr('date') birthday")
+        .to.contain("@attr('object') someObject")
+        .to.contain("@attr('number') age")
+        .to.contain("@attr('string') name")
+        .to.contain("@attr('custom-transform') customAttr");
 
-      expect(_file('tests/unit/models/foo-test.ts')).to.equal(fixture('model-test/foo-default.ts'));
+      expect(_file('tests/unit/models/foo-test.js')).to.equal(fixture('model-test/foo-default.js'));
     });
   });
 
@@ -66,14 +66,14 @@ describe('Acceptance: generate and destroy model blueprints', function() {
     let args = ['model', 'comment', 'post:belongs-to', 'author:belongs-to:user'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/models/comment.ts'))
-        .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Comment extends DS.Model.extend(')
-        .to.contain("post: DS.belongsTo('post')")
-        .to.contain("author: DS.belongsTo('user')");
+      expect(_file('app/models/comment.js'))
+        .to.contain("import { Model } from 'ember-data';")
+        .to.contain('export default class Comment extends Model')
+        .to.contain("@belongsTo('post')")
+        .to.contain("@belongsTo('user')");
 
-      expect(_file('tests/unit/models/comment-test.ts')).to.equal(
-        fixture('model-test/comment-default.ts')
+      expect(_file('tests/unit/models/comment-test.js')).to.equal(
+        fixture('model-test/comment-default.js')
       );
     });
   });
@@ -82,14 +82,14 @@ describe('Acceptance: generate and destroy model blueprints', function() {
     let args = ['model', 'post', 'comments:has-many', 'otherComments:has-many:comment'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/models/post.ts'))
-        .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Post extends DS.Model.extend(')
-        .to.contain("comments: DS.hasMany('comment')")
-        .to.contain("otherComments: DS.hasMany('comment')");
+      expect(_file('app/models/post.js'))
+        .to.contain("import { Model } from 'ember-data';")
+        .to.contain('export default class Post extends Model')
+        .to.contain("@hasMany('comment') comments")
+        .to.contain("@hasMany('comment') otherComments");
 
-      expect(_file('tests/unit/models/post-test.ts')).to.equal(
-        fixture('model-test/post-default.ts')
+      expect(_file('tests/unit/models/post-test.js')).to.equal(
+        fixture('model-test/post-default.js')
       );
     });
   });
@@ -98,7 +98,7 @@ describe('Acceptance: generate and destroy model blueprints', function() {
     let args = ['model-test', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('tests/unit/models/foo-test.ts')).to.equal(fixture('model-test/foo-default.ts'));
+      expect(_file('tests/unit/models/foo-test.js')).to.equal(fixture('model-test/foo-default.js'));
     });
   });
 
@@ -109,7 +109,7 @@ describe('Acceptance: generate and destroy model blueprints', function() {
 
     it('model-test-test foo', function() {
       return emberGenerateDestroy(['model-test', 'foo'], _file => {
-        expect(_file('tests/unit/models/foo-test.ts')).to.equal(fixture('model-test/rfc232.ts'));
+        expect(_file('tests/unit/models/foo-test.js')).to.equal(fixture('model-test/rfc232.js'));
       });
     });
   });
@@ -127,8 +127,8 @@ describe('Acceptance: generate and destroy model blueprints', function() {
       let args = ['model-test', 'foo'];
 
       return emberGenerateDestroy(args, _file => {
-        expect(_file('tests/unit/models/foo-test.ts')).to.equal(
-          fixture('model-test/foo-mocha-0.12.ts')
+        expect(_file('tests/unit/models/foo-test.js')).to.equal(
+          fixture('model-test/foo-mocha-0.12.js')
         );
       });
     });

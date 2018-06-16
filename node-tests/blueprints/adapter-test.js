@@ -26,22 +26,14 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
     let args = ['adapter', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/adapters/foo.ts'))
+      expect(_file('app/adapters/foo.js'))
         .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Foo extends DS.JSONAPIAdapter.extend({')
+        .to.contain('export default class Foo extends DS.JSONAPIAdapter {')
         .to.contain('  // anything which *must* be merged on the prototype')
-        .to.contain('}) {')
-        .to.contain('  // normal class body')
-        .to.contain('}')
-        .to.contain('// DO NOT DELETE: this is how TypeScript knows how to look up your adapters.')
-        .to.contain("declare module 'ember-data' {")
-        .to.contain('  interface AdapterRegistry {')
-        .to.contain("    'foo': Foo;")
-        .to.contain('  }')
         .to.contain('}');
 
-      expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-        fixture('adapter-test/foo-default.ts')
+      expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+        fixture('adapter-test/foo-default.js')
       );
     });
   });
@@ -53,12 +45,12 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
 
     return emberGenerate(['adapter', 'application']).then(() =>
       emberGenerateDestroy(args, _file => {
-        expect(_file('app/adapters/foo.ts'))
+        expect(_file('app/adapters/foo.js'))
           .to.contain("import ApplicationAdapter from './application';")
-          .to.contain('export default class Foo extends ApplicationAdapter.extend({');
+          .to.contain('export default class Foo extends ApplicationAdapter {');
 
-        expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-          fixture('adapter-test/foo-default.ts')
+        expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+          fixture('adapter-test/foo-default.js')
         );
       })
     );
@@ -68,12 +60,12 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
     let args = ['adapter', 'foo', '--base-class=bar'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/adapters/foo.ts'))
+      expect(_file('app/adapters/foo.js'))
         .to.contain("import BarAdapter from './bar';")
-        .to.contain('export default class Foo extends BarAdapter.extend({');
+        .to.contain('export default class Foo extends BarAdapter {');
 
-      expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-        fixture('adapter-test/foo-default.ts')
+      expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+        fixture('adapter-test/foo-default.js')
       );
     });
   });
@@ -91,12 +83,12 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
     let args = ['adapter', 'application'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/adapters/application.ts'))
+      expect(_file('app/adapters/application.js'))
         .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Application extends DS.JSONAPIAdapter.extend({');
+        .to.contain('export default class Application extends DS.JSONAPIAdapter {');
 
-      expect(_file('tests/unit/adapters/application-test.ts')).to.equal(
-        fixture('adapter-test/application-default.ts')
+      expect(_file('tests/unit/adapters/application-test.js')).to.equal(
+        fixture('adapter-test/application-default.js')
       );
     });
   });
@@ -105,8 +97,8 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
     let args = ['adapter-test', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-        fixture('adapter-test/foo-default.ts')
+      expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+        fixture('adapter-test/foo-default.js')
       );
     });
   });
@@ -118,8 +110,8 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
 
     it('adapter-test-test foo', function() {
       return emberGenerateDestroy(['adapter-test', 'foo'], _file => {
-        expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-          fixture('adapter-test/rfc232.ts')
+        expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+          fixture('adapter-test/rfc232.js')
         );
       });
     });
@@ -138,8 +130,8 @@ describe('Acceptance: generate and destroy adapter blueprints', function() {
       let args = ['adapter-test', 'foo'];
 
       return emberGenerateDestroy(args, _file => {
-        expect(_file('tests/unit/adapters/foo-test.ts')).to.equal(
-          fixture('adapter-test/foo-mocha-0.12.ts')
+        expect(_file('tests/unit/adapters/foo-test.js')).to.equal(
+          fixture('adapter-test/foo-mocha-0.12.js')
         );
       });
     });

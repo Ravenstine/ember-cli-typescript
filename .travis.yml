@@ -17,15 +17,12 @@ env:
     - JOBS=1
   matrix:
     - EMBER_TRY_SCENARIO=defaults
-    - EMBER_TRY_SCENARIO=typescript-release
-    - EMBER_TRY_SCENARIO=typescript-beta
     - EMBER_TRY_SCENARIO=ember-cli-release
     - EMBER_TRY_SCENARIO=ember-cli-beta
 
 matrix:
   fast_finish: true
   allow_failures:
-    - env: EMBER_TRY_SCENARIO=typescript-beta
     - env: EMBER_TRY_SCENARIO=ember-cli-beta
 
 before_install:

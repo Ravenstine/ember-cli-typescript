@@ -22,8 +22,8 @@ describe('Blueprint: controller-test', function() {
 
     it('controller-test foo', function() {
       return emberGenerateDestroy(['controller-test', 'foo'], _file => {
-        expect(_file('tests/unit/controllers/foo-test.ts')).to.equal(
-          fixture('controller-test/default.ts')
+        expect(_file('tests/unit/controllers/foo-test.js')).to.equal(
+          fixture('controller-test/default.js')
         );
       });
     });
@@ -35,8 +35,8 @@ describe('Blueprint: controller-test', function() {
 
       it('controller-test foo', function() {
         return emberGenerateDestroy(['controller-test', 'foo'], _file => {
-          expect(_file('tests/unit/controllers/foo-test.ts')).to.equal(
-            fixture('controller-test/rfc232.ts')
+          expect(_file('tests/unit/controllers/foo-test.js')).to.equal(
+            fixture('controller-test/rfc232.js')
           );
         });
       });
@@ -53,8 +53,8 @@ describe('Blueprint: controller-test', function() {
 
       it('controller-test foo for mocha', function() {
         return emberGenerateDestroy(['controller-test', 'foo'], _file => {
-          expect(_file('tests/unit/controllers/foo-test.ts')).to.equal(
-            fixture('controller-test/mocha.ts')
+          expect(_file('tests/unit/controllers/foo-test.js')).to.equal(
+            fixture('controller-test/mocha.js')
           );
         });
       });
@@ -71,8 +71,8 @@ describe('Blueprint: controller-test', function() {
 
       it('controller-test foo', function() {
         return emberGenerateDestroy(['controller-test', 'foo'], _file => {
-          expect(_file('tests/unit/controllers/foo-test.ts')).to.equal(
-            fixture('controller-test/mocha-0.12.ts')
+          expect(_file('tests/unit/controllers/foo-test.js')).to.equal(
+            fixture('controller-test/mocha-0.12.js')
           );
         });
       });
@@ -88,8 +88,8 @@ describe('Blueprint: controller-test', function() {
 
     it('controller-test foo', function() {
       return emberGenerateDestroy(['controller-test', 'foo'], _file => {
-        expect(_file('tests/unit/controllers/foo-test.ts')).to.equal(
-          fixture('controller-test/default.ts')
+        expect(_file('tests/unit/controllers/foo-test.js')).to.equal(
+          fixture('controller-test/default.js')
         );
       });
     });

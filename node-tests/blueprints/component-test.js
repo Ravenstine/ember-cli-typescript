@@ -16,7 +16,7 @@ describe('Acceptance: ember generate and destroy component', function() {
     // pass any additional command line options in the arguments array
     return emberNew()
       .then(() => emberGenerateDestroy(args, (file) => {
-        expect(file('app/components/foo-bar.ts')).to.contain('export default class FooBar extends Component.extend');
+        expect(file('app/components/foo-bar.js')).to.contain('export default class FooBar extends Component');
     }));
   });
 
@@ -25,9 +25,9 @@ describe('Acceptance: ember generate and destroy component', function() {
 
     return emberNew({ target: 'addon' })
       .then(() => emberGenerateDestroy(args, (file) => {
-        expect(file('addon/components/foo-bar.ts'))
-          .to.contain('// @ts-ignore: Ignore import of compiled template\nimport layout from \'../templates/components/foo-bar\';\n');
-        expect(file('addon/components/foo-bar.ts'))
+        expect(file('addon/components/foo-bar.js'))
+          .to.contain('import layout from \'../templates/components/foo-bar\';\n');
+        expect(file('addon/components/foo-bar.js'))
           .to.contain('layout = layout;');
     }));
   });

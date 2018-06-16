@@ -26,12 +26,12 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
     let args = ['serializer', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/serializers/foo.ts'))
+      expect(_file('app/serializers/foo.js'))
         .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Foo extends DS.JSONAPISerializer.extend(');
+        .to.contain('export default class Foo extends DS.JSONAPISerializer');
 
-      expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-        fixture('serializer-test/foo-default.ts')
+      expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+        fixture('serializer-test/foo-default.js')
       );
     });
   });
@@ -43,12 +43,12 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
 
     return emberGenerate(['serializer', 'application']).then(() =>
       emberGenerateDestroy(args, _file => {
-        expect(_file('app/serializers/foo.ts'))
+        expect(_file('app/serializers/foo.js'))
           .to.contain("import ApplicationSerializer from './application';")
-          .to.contain('export default class Foo extends ApplicationSerializer.extend({');
+          .to.contain('export default class Foo extends ApplicationSerializer');
 
-        expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-          fixture('serializer-test/foo-default.ts')
+        expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+          fixture('serializer-test/foo-default.js')
         );
       })
     );
@@ -58,12 +58,12 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
     let args = ['serializer', 'foo', '--base-class=bar'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/serializers/foo.ts'))
+      expect(_file('app/serializers/foo.js'))
         .to.contain("import BarSerializer from './bar';")
-        .to.contain('export default class Foo extends BarSerializer.extend({');
+        .to.contain('export default class Foo extends BarSerializer');
 
-      expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-        fixture('serializer-test/foo-default.ts')
+      expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+        fixture('serializer-test/foo-default.js')
       );
     });
   });
@@ -81,12 +81,12 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
     let args = ['serializer', 'application'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('app/serializers/application.ts'))
+      expect(_file('app/serializers/application.js'))
         .to.contain("import DS from 'ember-data';")
-        .to.contain('export default class Application extends DS.JSONAPISerializer.extend({');
+        .to.contain('export default class Application extends DS.JSONAPISerializer');
 
-      expect(_file('tests/unit/serializers/application-test.ts')).to.equal(
-        fixture('serializer-test/application-default.ts')
+      expect(_file('tests/unit/serializers/application-test.js')).to.equal(
+        fixture('serializer-test/application-default.js')
       );
     });
   });
@@ -95,8 +95,8 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
     let args = ['serializer-test', 'foo'];
 
     return emberGenerateDestroy(args, _file => {
-      expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-        fixture('serializer-test/foo-default.ts')
+      expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+        fixture('serializer-test/foo-default.js')
       );
     });
   });
@@ -108,8 +108,8 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
 
     it('serializer-test-test foo', function() {
       return emberGenerateDestroy(['serializer-test', 'foo'], _file => {
-        expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-          fixture('serializer-test/rfc232.ts')
+        expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+          fixture('serializer-test/rfc232.js')
         );
       });
     });
@@ -128,8 +128,8 @@ describe('Acceptance: generate and destroy serializer blueprints', function() {
       let args = ['serializer-test', 'foo'];
 
       return emberGenerateDestroy(args, _file => {
-        expect(_file('tests/unit/serializers/foo-test.ts')).to.equal(
-          fixture('serializer-test/foo-mocha-0.12.ts')
+        expect(_file('tests/unit/serializers/foo-test.js')).to.equal(
+          fixture('serializer-test/foo-mocha-0.12.js')
         );
       });
     });

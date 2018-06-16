@@ -9,22 +9,6 @@ module.exports = {
       },
     },
     {
-      name: 'typescript-release',
-      npm: {
-        devDependencies: {
-          typescript: 'latest',
-        },
-      },
-    },
-    {
-      name: 'typescript-beta',
-      npm: {
-        devDependencies: {
-          typescript: 'next',
-        },
-      },
-    },
-    {
       name: 'ember-cli-release',
       npm: {
         devDependencies: {

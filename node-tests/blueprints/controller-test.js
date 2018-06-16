@@ -16,10 +16,8 @@ describe('Acceptance: ember generate and destroy controller', function() {
     // pass any additional command line options in the arguments array
     return emberNew().then(() =>
       emberGenerateDestroy(args, file => {
-        const generated = file('app/controllers/foo-bar.ts');
+        const generated = file('app/controllers/foo-bar.js');
         expect(generated).to.contain('class FooBar extends Controller');
-        expect(generated).to.contain('interface Registry');
-        expect(generated).to.contain("'foo-bar': FooBar");
       })
     );
   });

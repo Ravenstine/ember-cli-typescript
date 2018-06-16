@@ -27,8 +27,8 @@ describe('Blueprint: service-test', function() {
 
       it('service-test foo', function() {
         return emberGenerateDestroy(['service-test', 'foo'], _file => {
-          expect(_file('tests/unit/services/foo-test.ts'))
-            .to.equal(fixture('service-test/default.ts'));
+          expect(_file('tests/unit/services/foo-test.js'))
+            .to.equal(fixture('service-test/default.js'));
         });
       });
     });
@@ -44,15 +44,15 @@ describe('Blueprint: service-test', function() {
 
       it('service-test foo', function() {
         return emberGenerateDestroy(['service-test', 'foo'], _file => {
-          expect(_file('tests/unit/services/foo-test.ts'))
-            .to.equal(fixture('service-test/mocha.ts'));
+          expect(_file('tests/unit/services/foo-test.js'))
+            .to.equal(fixture('service-test/mocha.js'));
         });
       });
 
       it('service-test foo --pod', function() {
         return emberGenerateDestroy(['service-test', 'foo', '--pod'], _file => {
-          expect(_file('tests/unit/foo/service-test.ts'))
-            .to.equal(fixture('service-test/mocha.ts'));
+          expect(_file('tests/unit/foo/service-test.js'))
+            .to.equal(fixture('service-test/mocha.js'));
         });
       });
     });
@@ -68,15 +68,15 @@ describe('Blueprint: service-test', function() {
 
       it('service-test foo', function() {
         return emberGenerateDestroy(['service-test', 'foo'], _file => {
-          expect(_file('tests/unit/services/foo-test.ts'))
-          .to.equal(fixture('service-test/mocha-0.12.ts'));
+          expect(_file('tests/unit/services/foo-test.js'))
+          .to.equal(fixture('service-test/mocha-0.12.js'));
         });
       });
 
       it('service-test foo --pod', function() {
         return emberGenerateDestroy(['service-test', 'foo', '--pod'], _file => {
-          expect(_file('tests/unit/foo/service-test.ts'))
-          .to.equal(fixture('service-test/mocha-0.12.ts'));
+          expect(_file('tests/unit/foo/service-test.js'))
+          .to.equal(fixture('service-test/mocha-0.12.js'));
         });
       });
     });
@@ -88,8 +88,8 @@ describe('Blueprint: service-test', function() {
 
       it('service-test foo', function() {
         return emberGenerateDestroy(['service-test', 'foo'], _file => {
-          expect(_file('tests/unit/services/foo-test.ts'))
-            .to.equal(fixture('service-test/rfc232.ts'));
+          expect(_file('tests/unit/services/foo-test.js'))
+            .to.equal(fixture('service-test/rfc232.js'));
         });
       });
     });
@@ -107,10 +107,10 @@ describe('Blueprint: service-test', function() {
 
       it('service-test foo', function() {
         return emberGenerateDestroy(['service-test', 'foo'], _file => {
-          expect(_file('tests/unit/services/foo-test.ts'))
-            .to.equal(fixture('service-test/default.ts'));
+          expect(_file('tests/unit/services/foo-test.js'))
+            .to.equal(fixture('service-test/default.js'));
 
-          expect(_file('app/service-test/foo.ts'))
+          expect(_file('app/service-test/foo.js'))
             .to.not.exist;
         });
       });

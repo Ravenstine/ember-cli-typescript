@@ -1,10 +1,10 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk');
-const stringUtil = require('ember-cli-string-utils');
-const EmberRouterGenerator = require('ember-router-generator');
+const fs                   = require('fs'),
+      path                 = require('path'),
+      chalk                = require('chalk'),
+      stringUtil           = require('ember-cli-string-utils'),
+      EmberRouterGenerator = require('ember-router-generator');
 
 module.exports = {
   description: 'Generates a route and a template, and registers the route with the router.',

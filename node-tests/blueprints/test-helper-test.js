@@ -18,7 +18,7 @@ describe('Blueprint: test-helper', function() {
 
     it('test-helper foo', function() {
       return emberGenerateDestroy(['test-helper', 'foo'], _file => {
-        expect(_file('tests/helpers/foo.ts'))
+        expect(_file('tests/helpers/foo.js'))
           .to.contain("import { registerAsyncHelper } from '@ember/test';")
           .to.contain("export default registerAsyncHelper('foo', function(app) {")
           .to.contain('}');

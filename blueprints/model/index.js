@@ -1,11 +1,11 @@
 'use strict';
 
-const inflection  = require('inflection');
-const stringUtils = require('ember-cli-string-utils');
-const EOL         = require('os').EOL;
+const inflection  = require('inflection'),
+      stringUtils = require('ember-cli-string-utils'),
+      EOL         = require('os').EOL;
 
 module.exports = {
-  description: 'Generates an ember-data model.',
+  description: 'Generates an ECMAScript ember-data model.',
 
   anonymousOptions: [
     'name',
@@ -13,34 +13,37 @@ module.exports = {
   ],
 
   locals: function(options) {
-    var attrs = [];
-    var needs = [];
-    var entityOptions = options.entity.options;
+    const attrs = [],
+          needs = [],
+          decorators = {},
+          entityOptions = options.entity.options;
 
     for (var name in entityOptions) {
-      var type = entityOptions[name] || '';
-      var foreignModel = name;
+      let type = entityOptions[name] || '',
+          foreignModel = name;
       if (type.indexOf(':') > -1) {
         foreignModel = type.split(':')[1];
         type = type.split(':')[0];
       }
-      var dasherizedName = stringUtils.dasherize(name);
-      var camelizedName = stringUtils.camelize(name);
-      var dasherizedType = stringUtils.dasherize(type);
-      var dasherizedForeignModel = stringUtils.dasherize(foreignModel);
-      var dasherizedForeignModelSingular = inflection.singularize(dasherizedForeignModel);
-
-      var attr;
+      const dasherizedName                 = stringUtils.dasherize(name),
+            camelizedName                  = stringUtils.camelize(name),
+            dasherizedType                 = stringUtils.dasherize(type),
+            dasherizedForeignModel         = stringUtils.dasherize(foreignModel),
+            dasherizedForeignModelSingular = inflection.singularize(dasherizedForeignModel);
+      let attr;
       if (/has-many/.test(dasherizedType)) {
-        var camelizedNamePlural = inflection.pluralize(camelizedName);
-        attr = dsAttr(dasherizedForeignModelSingular, dasherizedType);
-        attrs.push(camelizedNamePlural + ': ' + attr);
+        const camelizedNamePlural = inflection.pluralize(camelizedName);
+        attr = decAttr(dasherizedForeignModelSingular, dasherizedType);
+        attrs.push(attr + ' ' + camelizedNamePlural);
+        decorators.hasMany = true;
       } else if (/belongs-to/.test(dasherizedType)) {
-        attr = dsAttr(dasherizedForeignModel, dasherizedType);
-        attrs.push(camelizedName + ': ' + attr);
+        attr = decAttr(dasherizedForeignModel, dasherizedType);
+        attrs.push(attr + ' ' + camelizedName);
+        decorators.belongsTo = true;
       } else {
-        attr = dsAttr(dasherizedName, dasherizedType);
-        attrs.push(camelizedName + ': ' + attr);
+        attr = decAttr(dasherizedName, dasherizedType);
+        attrs.push(attr + ' ' + camelizedName);
+        decorators.attr = true;
       }
 
       if (/has-many|belongs-to/.test(dasherizedType)) {
@@ -48,31 +51,37 @@ module.exports = {
       }
     }
 
-    var needsDeduplicated = needs.filter(function(need, i) {
+    const needsDeduplicated = needs.filter(function(need, i) {
       return needs.indexOf(need) === i;
     });
 
-    attrs = attrs.join(',' + EOL + '  ');
-    needs = '  needs: [' + needsDeduplicated.join(', ') + ']';
+    const decoratorImport = (function(){
+      const decoratorNames = Object.keys(decorators);
+      if(decoratorNames){
+        return `import { ${decoratorNames.join(', ')} } from 'ember-decorators/data';`
+      }
+      return '';
+    })();    
 
     return {
-      attrs: attrs,
-      needs: needs
+      attrs: attrs.join(`  ${EOL}`),
+      needs: '  needs: [' + needsDeduplicated.join(', ') + ']',
+      decoratorImport
     };
   }
 };
 
-function dsAttr(name, type) {
+function decAttr(name, type) {
   switch (type) {
   case 'belongs-to':
-    return 'DS.belongsTo(\'' + name + '\')';
+    return '@belongsTo(\'' + name + '\')';
   case 'has-many':
-    return 'DS.hasMany(\'' + name + '\')';
+    return '@hasMany(\'' + name + '\')';
   case '':
     //"If you don't specify the type of the attribute, it will be whatever was provided by the server"
     //https://emberjs.com/guides/models/defining-models/
-    return 'DS.attr()';
+    return '@attr()';
   default:
-    return 'DS.attr(\'' + type + '\')';
+    return '@attr(\'' + type + '\')';
   }
 }

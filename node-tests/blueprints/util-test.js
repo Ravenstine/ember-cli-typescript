@@ -16,7 +16,7 @@ describe('Acceptance: ember generate and destroy util', function() {
     // pass any additional command line options in the arguments array
     return emberNew()
       .then(() => emberGenerateDestroy(args, (file) => {
-        expect(file('app/utils/foo-bar.ts')).to.contain('export default function fooBar');
+        expect(file('app/utils/foo-bar.js')).to.contain('export default function fooBar');
     }));
   });
 });

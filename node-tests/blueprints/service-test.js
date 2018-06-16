@@ -16,10 +16,8 @@ describe('Acceptance: ember generate and destroy service', function() {
     // pass any additional command line options in the arguments array
     return emberNew().then(() =>
       emberGenerateDestroy(args, file => {
-        const generated = file('app/services/foo-bar.ts');
+        const generated = file('app/services/foo-bar.js');
         expect(generated).to.contain('class FooBar extends Service');
-        expect(generated).to.contain('interface Registry');
-        expect(generated).to.contain("'foo-bar': FooBar");
       })
     );
   });
