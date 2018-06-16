@@ -1,7 +1,7 @@
 {
   "name": "ember-es-class-generators",
-  "version": "1.3.2",
-  "description": "Today's ECMAScript classes in Ember... today!",
+  "version": "0.0.1",
+  "description": "Generate ECMAScript classes with Ember CLI",
   "keywords": [
     "ember-addon"
   ],
