@@ -15,5 +15,6 @@
     "ember-beta": true,
     "ember-canary": true,
     "ember-default": true
-  }
+  },
+  "mocha.subdirectory": "node-tests/fixtures/util-test"
 }
