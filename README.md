@@ -1,3 +1,5 @@
+*This is obsolete with the Octane edition of Ember.  Do not use this.*
+
 Ember ES Class Generators
 =========================
 
